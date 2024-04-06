@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgba(30, 30, 46, 1);
+}
+
+.container {
+    text-align: center;
+}
+
+.form-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    color: white;
+}
+
+.btnLogin {
+    background-color: rgba(255, 117, 6, 1);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btnLogin:hover {
+    background-color: rgba(255, 117, 6, 0.8);
+}
+
+.input-style {
+    background-color: rgba(43, 43, 63, 1);
+    border-radius: 8px;
+    padding: 11px 24px 13px 16px;
+    
+}
+
