@@ -1,16 +1,18 @@
-import { Button, Checkbox, Form, Input } from "antd";
+import { Button, Form, Input } from "antd";
 import { useState } from "react";
 
-const Login: React.FC = () => {
+const ResetPassword: React.FC = () => {
     const [form] = Form.useForm();
     const [error, setError] = useState<string | null>(null);
 
     const onFinish = (values: any) => {
-        if (values.username !== "abc@gmail.com" || values.password !== "123456") {
-            setError("Tên đăng nhập hoặc mật khẩu không chính xác");
+        // Kiểm tra xem mật khẩu nhập lại có trùng khớp với mật khẩu mới không
+        if (values.npassword !== values.rpassword) {
+            setError("Mật khẩu nhập lại không khớp với mật khẩu mới!");
         } else {
+            // Xử lý khi mật khẩu nhập lại khớp với mật khẩu mới
             setError(null);
-            // Xử lý khi đăng nhập thành công
+            // Tiếp tục xử lý hoặc gửi yêu cầu khôi phục mật khẩu tới server
         }
     };
 
@@ -24,87 +26,86 @@ const Login: React.FC = () => {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            height: '100vh',
-            backgroundColor: 'rgba(30, 30, 46, 1)',
         }}>
             <img 
-                src="/assett/img/vcpmc_logo-removebg-preview 1.png" 
+                src="/assett/img/logo.png" 
                 alt="" 
-                style={{
-                    backgroundColor: 'white',
-                    borderRadius: '50%'
-                }}
             />
-            <h1 style={{ color: 'white' }}>Đăng nhập</h1>
+            <h1 style={{ color: 'white' }}>Đặt lại mật khẩu</h1>
             <Form 
                 form={form}
-                name="login"
+                name="resetPassword"
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
             >
-                <div style={{ color: 'rgba(255, 255, 255, 1)', marginBottom: 2 }}>Tên đăng nhập</div>
+                <div style={{ color: 'rgba(255, 255, 255, 1)', marginBottom: 2 }}>Mật khẩu mới:</div>
                 <Form.Item 
-                    name="username" 
-                    rules={[{ required: true, message: 'Vui lòng nhập tên đăng nhập!' }]}
-                    validateStatus={error ? 'error' : ''}
+                    name="npassword" 
+                    rules={[{ required: true, message: 'Vui lòng nhập mật khẩu!' }]}
                     hasFeedback
                 >
-                    <Input 
+                    <Input.Password
                         style={{
                             backgroundColor: 'rgba(43, 43, 63, 1)',
                             borderRadius: '8px',
+                            border:'none',
                             padding: '11px 24px 13px 16px',
                             color: 'white',
-                            border: error ? '1px solid red' : 'none', // Tô viền đỏ khi có lỗi
                             width: '500px',
                             fontSize: '14px'
                         }} 
                     />
                 </Form.Item>
-                <div style={{ color: 'rgba(255, 255, 255, 1)', marginBottom: 2 }}>Password</div>
+                <div style={{ color: 'rgba(255, 255, 255, 1)', marginBottom: 2 }}>Nhập lại mật khẩu mới:</div>
                 <Form.Item 
-                    name="password" 
-                    rules={[{ required: true, message: 'Vui lòng nhập mật khẩu!' }]}
-                    validateStatus={error ? 'error' : ''}
+                    name="rpassword" 
+                    dependencies={['npassword']}
+                    rules={[
+                        { required: true, message: 'Vui lòng nhập lại mật khẩu!' },
+                        ({ getFieldValue }) => ({
+                            validator(_, value) {
+                                if (!value || getFieldValue('npassword') === value) {
+                                    return Promise.resolve();
+                                }
+                                return Promise.reject('Mật khẩu nhập lại không khớp với mật khẩu mới!');
+                            },
+                        }),
+                    ]}
                     hasFeedback
                 >
                     <Input.Password 
                         style={{
                             backgroundColor: 'rgba(43, 43, 63, 1)',
                             borderRadius: '8px',
+                            border:'none',
                             padding: '11px 24px 13px 16px',
                             color: 'white',
-                            border: error ? '1px solid red' : 'none', // Tô viền đỏ khi có lỗi
                             width: '500px',
                             fontSize: '14px'
                         }} 
                     />
                 </Form.Item>
-                {error && <div style={{ color: 'red' }}>{error}</div>}
-                <Form.Item >
-                    <Form.Item name="remember" valuePropName="checked" noStyle>
-                        <Checkbox style={{ color: 'white' }}>Ghi nhớ đăng nhập</Checkbox>
-                    </Form.Item>
-                </Form.Item>
-
+                {error && <div style={{ color: 'red', marginBottom: 10 }}>{error}</div>}
                 <Form.Item style={{ textAlign: 'center' }}>
                     <Button 
-                        type="primary"
                         htmlType="submit" 
                         style={{
                             width: '150px',
                             height: '40px',
                             borderRadius: '4px',
-                            transition: 'background-color 0.3s ease',
+                            color: 'white',
+                            backgroundColor:'rgba(255, 117, 6, 1)',
+                            border:'none'
                         }}
                     >
-                        Đăng nhập
+                        Lưu mật khẩu
                     </Button>
                 </Form.Item>
 
             </Form>
+            
         </div>
      );
 }
  
-export default Login;
+export default ResetPassword;
