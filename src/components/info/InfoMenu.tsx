@@ -199,7 +199,7 @@ const InfoMenu: React.FC<InfoMenuProps> = ({ children }) => {
                 background: 'none',
                 border: 'none'
             }}>
-                <img src="/assett/img/avatar.jpg" alt="" style={{ height: '40px', marginRight: 5 }} />
+                <img src="/assett/img/avatar.jpg" alt="" style={{ height: '40px', marginRight: 5 ,borderRadius: '50%'}} />
                 <div style={{
                     display: 'flex',
                     flexDirection: 'column',
