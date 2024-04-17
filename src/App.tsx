@@ -6,6 +6,7 @@ import ResetPasswordPage from './pages/login/ResetPasswordPage';
 import ErrorLinkPage from './pages/login/ErrorLinkPage';
 import InfoPage from './pages/info/InfoPage';
 import ManagePage from './pages/manage/ManagePage';
+import ContractDetailsPage from './pages/manage/ContractDetailsPage';
 
 
 
@@ -21,6 +22,7 @@ function App() {
         <Route path='/Info' element={<InfoPage/>} />
 
         <Route path='/Manage' element={<ManagePage/>}/>
+        <Route path='/ContractDetails' element={<ContractDetailsPage/>}/>
       </Routes>
     </Router>
   );

@@ -1,0 +1,131 @@
+.table-container {
+    display: flex;
+    flex-direction: column;
+    border: none;
+    border-radius: 5px 5px 0px 0px;
+    overflow: hidden;
+
+  }
+  
+  .table-header {
+    display: flex;
+    background-color: rgba(47, 47, 65, 0.7);
+    border: none;
+    font-weight: bold; /* Để làm nổi bật tiêu đề */
+  }
+  
+  .table-cell {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    color: rgba(255, 172, 105, 1);
+  }
+  .data-cell {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.652);
+  }
+  .table-body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .data-row {
+    display: flex;
+    background-color: rgba(47, 47, 65, 0.7);
+  }
+  
+  .pagination-container {
+    display: flex;
+    align-items: center;
+    background-color: rgba(47, 47, 65, 1);
+  }
+  
+  .pagination-container span {
+    color: rgba(245, 245, 255, 1);
+    margin-right: auto;
+  }
+  
+  .float-button-container {
+    position: fixed;
+    right: 35px;
+    top: 40%;
+    bottom: 60%;
+  }
+  
+  .float-button-container > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(47, 47, 65, 1);
+    width: 70px;
+    height: 100px;
+    border-radius: 5px;
+  }
+  
+  .float-button-container button {
+    width: 35px;
+    height: 35px;
+    background-color: rgba(114, 114, 136, 0.5);
+    border-radius: 50%;
+    margin-bottom: 8px;
+    margin-top: 8px;
+    border: none;
+  }
+  
+  .float-button-container span {
+    color: white;
+    text-align: center;
+    font-size: 12px;
+  }
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #007bff; /* Màu xanh dương */
+    display: inline-block;
+    margin-right: 5px; /* Khoảng cách giữa dấu chấm và nội dung */
+  }
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.custom-notification {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(62, 62, 91, 1);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  width: 600px; 
+  height: 430px;
+  color: white;
+}
+
+.notification-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.notification-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px; /* Khoảng cách giữa các hàng */
+  height: 150px;
+}
+
+.notification-col {
+  flex: 1;
+  /* Thêm CSS tùy chỉnh cho các cột */
+}
