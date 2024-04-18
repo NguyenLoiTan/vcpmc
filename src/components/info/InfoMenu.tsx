@@ -1,12 +1,20 @@
 import { CalendarOutlined, DownOutlined, FileTextOutlined, InboxOutlined, MoneyCollectOutlined, QuestionCircleOutlined, SettingOutlined, UnorderedListOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import { ReactNode } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 interface InfoMenuProps {
     children: ReactNode;
 }
 
 const InfoMenu: React.FC<InfoMenuProps> = ({ children }) => {
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const handleManage = () => {
+        // Chuyển hướng tới trang "/login"
+        navigate('/Manage');
+    };
     return ( 
         <div >
             <div className="menu" style={{
@@ -40,8 +48,9 @@ const InfoMenu: React.FC<InfoMenuProps> = ({ children }) => {
                     alignItems: 'center',
                     flexDirection: 'column'
                 }}>
-                    <div className="item" style={{
+                    <Button type="link" className="item" style={{
                         width: '100%',
+                        height: '100%',
                         padding: '10px',
                         display: 'flex',
                         margin: '12px 0',
@@ -50,16 +59,18 @@ const InfoMenu: React.FC<InfoMenuProps> = ({ children }) => {
                         borderRadius: '5px',
                         alignItems: 'center',
                         flexDirection: 'column',
-                        transition: 'background-color 0.3s ease'
+                        backgroundColor:'transparent',
+                        color: location.pathname === '/' ? 'rgba(182, 81, 0, 1)' : 'white',
                     }}>
                         <i className='icon-item' style={{}}>
                             <InboxOutlined />
                         </i>
                         <span>Kho bản ghi</span>
-                    </div>
+                    </Button>
 
-                    <div className="item" style={{
+                    <Button type="link" className="item" style={{
                         width: '100%',
+                        height: '100%',
                         padding: '10px',
                         display: 'flex',
                         margin: '12px 0',
@@ -68,16 +79,18 @@ const InfoMenu: React.FC<InfoMenuProps> = ({ children }) => {
                         borderRadius: '5px',
                         alignItems: 'center',
                         flexDirection: 'column',
-                        transition: 'background-color 0.3s ease'
+                        backgroundColor:'transparent',
+                        color: location.pathname === '/' ? 'rgba(182, 81, 0, 1)' : 'white',
                     }}>
                         <i className='icon-item'>
                             <UnorderedListOutlined />
                         </i>
                         <span>Playlist</span>
-                    </div>
+                    </Button>
                     
-                    <div className="item" style={{
+                    <Button type="link" className="item" style={{
                         width: '100%',
+                        height: '100%',
                         padding: '10px',
                         display: 'flex',
                         margin: '12px 0',
@@ -86,16 +99,18 @@ const InfoMenu: React.FC<InfoMenuProps> = ({ children }) => {
                         borderRadius: '5px',
                         alignItems: 'center',
                         flexDirection: 'column',
-                        transition: 'background-color 0.3s ease'
+                        backgroundColor:'transparent',
+                        color: location.pathname === '/' ? 'rgba(182, 81, 0, 1)' : 'white',
                     }}>
                         <i className='icon-item'>
                             <CalendarOutlined />
                         </i>
                         <span>Lập lịch phát</span>
-                    </div>
+                    </Button>
 
-                    <div className="item" style={{
+                    <Button type="link" className="item" style={{
                         width: '100%',
+                        height: '100%',
                         padding: '10px',
                         display: 'flex',
                         margin: '12px 0',
@@ -104,16 +119,18 @@ const InfoMenu: React.FC<InfoMenuProps> = ({ children }) => {
                         borderRadius: '5px',
                         alignItems: 'center',
                         flexDirection: 'column',
-                        transition: 'background-color 0.3s ease'
-                    }}>
+                        backgroundColor:'transparent',
+                        color: location.pathname === '/Manage' ? 'rgba(182, 81, 0, 1)' : 'white',
+                    }} onClick={handleManage}>
                         <i className='icon-item'>
                             <FileTextOutlined />
                         </i>
                         <span>Quản lý</span>
-                    </div>
+                    </Button>
 
-                    <div className="item" style={{
+                    <Button type="link" className="item" style={{
                         width: '100%',
+                        height: '100%',
                         padding: '10px',
                         display: 'flex',
                         margin: '12px 0',
@@ -122,16 +139,18 @@ const InfoMenu: React.FC<InfoMenuProps> = ({ children }) => {
                         borderRadius: '5px',
                         alignItems: 'center',
                         flexDirection: 'column',
-                        transition: 'background-color 0.3s ease'
+                        backgroundColor:'transparent',
+                        color: location.pathname === '/' ? 'rgba(182, 81, 0, 1)' : 'white',
                     }}>
                         <i className='icon-item'>
                             <MoneyCollectOutlined />
                         </i>
                         <span>Doanh thu</span>
-                    </div>
+                    </Button>
 
-                    <div className="item" style={{
+                    <Button type="link" className="item" style={{
                         width: '100%',
+                        height: '100%',
                         padding: '10px',
                         display: 'flex',
                         margin: '12px 0',
@@ -140,16 +159,18 @@ const InfoMenu: React.FC<InfoMenuProps> = ({ children }) => {
                         borderRadius: '5px',
                         alignItems: 'center',
                         flexDirection: 'column',
-                        transition: 'background-color 0.3s ease'
+                        backgroundColor:'transparent',
+                        color: location.pathname === '/' ? 'rgba(182, 81, 0, 1)' : 'white',
                     }}>
                         <i className='icon-item'>
                             <SettingOutlined />
                         </i>
                         <span>Cài đặt</span>
-                    </div>
+                    </Button>
 
-                    <div className="item" style={{
+                    <Button type="link" className="item" style={{
                         width: '100%',
+                        height: '100%',
                         padding: '10px',
                         display: 'flex',
                         margin: '12px 0',
@@ -158,13 +179,14 @@ const InfoMenu: React.FC<InfoMenuProps> = ({ children }) => {
                         borderRadius: '5px',
                         alignItems: 'center',
                         flexDirection: 'column',
-                        transition: 'background-color 0.3s ease'
+                        backgroundColor:'transparent',
+                        color: location.pathname === '/' ? 'rgba(182, 81, 0, 1)' : 'white',
                     }}>
                         <i className='icon-item'>
                             <QuestionCircleOutlined />
                         </i>
                         <span>Hỗ trợ</span>
-                    </div>
+                    </Button>
                 </div>
 
             </div>

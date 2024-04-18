@@ -1,18 +1,36 @@
 import { CloseOutlined, CloudUploadOutlined, FilePdfOutlined, FileTextOutlined, FileWordOutlined, FormOutlined, InfoCircleOutlined,  RightOutlined } from "@ant-design/icons";
 import { Button, Row, Col, FloatButton, DatePicker, Upload, Checkbox, Input } from "antd";
+import TextArea from "antd/es/input/TextArea";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const ContractDetails = () => {
     const location = useLocation();
     const [isNotificationVisible, setIsNotificationVisible] = useState(false);
+    const navigate = useNavigate();
+    const [isReason , setIsReason ] = useState(false);
 
-
+    const handleEdit = () => {
+        // Chuyển hướng tới trang "/login"
+        navigate('/ContractEdit');
+    };
+    const handleAuthorized = () => {
+        navigate('/Authorized');
+    }
+    const handleContractDetails = () => {
+        navigate('/ContractDetails');
+    }
     const handleExtend = () =>{
         setIsNotificationVisible(true);
     }
     const handleHideNotification = () => {
         setIsNotificationVisible(false);
+    };
+    const handleReason = () =>{
+        setIsReason(true);
+    }
+    const handleHideReason = () => {
+        setIsReason(false);
     };
     return ( 
         <div>
@@ -37,7 +55,7 @@ const ContractDetails = () => {
                         border: 'none',
                         color: 'rgba(255, 255, 255, 1)',
                         backgroundColor: location.pathname === '/ContractDetails' ? 'rgba(182, 81, 0, 1)' : 'transparent',
-                    }}
+                    }} onClick={handleContractDetails}
                 >
                     Thông tin hợp đồng
                 </Button>
@@ -48,8 +66,8 @@ const ContractDetails = () => {
                         borderRadius: 20,
                         border: 'none',
                         color: 'rgba(255, 255, 255, 1)',
-                        backgroundColor: location.pathname === '/manage/exploit' ? 'rgba(182, 81, 0, 1)' : 'transparent',
-                    }}
+                        backgroundColor: location.pathname === '/Authorized' ? 'rgba(182, 81, 0, 1)' : 'transparent',
+                    }} onClick={handleAuthorized}
                 >
                     Tác phẩm ủy quyền
                 </Button>
@@ -57,64 +75,112 @@ const ContractDetails = () => {
 
             <Row gutter={[16, 16]}>
                 <Col span={8}>
-                    <div style={{height:250}}>
-                        <div style={{ color:'white' }}>Số hợp đồng: <span style={{color:'rgba(255, 255, 255, 0.652)'}}>BH123</span></div>
-                        <div style={{ color:'white',marginTop:10 }}>Tên hợp đồng: <span style={{color:'rgba(255, 255, 255, 0.652)'}}>Hợp đồng uỷ quyền tác phẩm âm nhạc</span></div>   
-                        <div style={{ color:'white',marginTop:10 }}>Ngày hiệu lực: <span style={{color:'rgba(255, 255, 255, 0.652)'}}>01/05/2021</span></div>   
-                        <div style={{ color:'white',marginTop:10 }}>Ngày hết hạn: <span style={{color:'rgba(255, 255, 255, 0.652)'}}>01/12/2021</span></div>   
-                        <div style={{ color:'white',marginTop:10 }}>Tình trạng: <span style={{color:'rgba(255, 255, 255, 0.652)',paddingLeft:50}}><span className="dot"></span>Còn thời hạn</span></div>   
-            
-                    </div>  
-                    
+                    <Row gutter={16}>
+                        <Col span={6}>
+                            <div style={{ color:'white' }}>Số hợp đồng: </div>
+                            <div style={{ color:'white',marginTop:10 }}>Tên hợp đồng: </div>
+                            <div style={{ color:'white',marginTop:10 }}>Ngày hiệu lực: </div>
+                            <div style={{ color:'white',marginTop:10 }}>Ngày hết hạn: </div>
+                            <div style={{ color:'white',marginTop:10 }}>Tình trạng: </div>
+                        </Col>
+                        <Col span={18}>
+                            <div style={{color:'rgba(255, 255, 255, 0.652)'}}>BH123</div>
+                            <div style={{color:'rgba(255, 255, 255, 0.652)',marginTop:10}}>Hợp đồng uỷ quyền tác phẩm âm nhạc</div>
+                            <div style={{color:'rgba(255, 255, 255, 0.652)',marginTop:10}}>01/05/2021</div>
+                            <div style={{color:'rgba(255, 255, 255, 0.652)',marginTop:10}}>01/12/2021</div>
+                            <div style={{color:'rgba(255, 255, 255, 0.652)',marginTop:10}}><span className="dot"></span>Còn thời hạn</div>
+                        </Col>
+                    </Row>
                 </Col>
                 <Col span={8}>
-                    <div style={{height:250}}>
-                        <div style={{ color:'white' }}>Đính kèm tệp: <span style={{color:'rgba(255, 255, 255, 0.652)',marginLeft:8}}><FileWordOutlined /> hetthuongcannho.doc</span></div>
-                        <div style={{ color:'white',marginTop:12 }}><span style={{color:'rgba(255, 255, 255, 0.652)',marginLeft:8}}><FilePdfOutlined /> hetthuongcannho.doc</span></div>
-                    </div>
+                    <Row gutter={16}>
+                        <Col span={6}>
+                        <div style={{ color:'white' }}>Đính kèm tệp: </div>
+                        <div style={{ color:'white',marginTop:12 }}></div>
+                        </Col>
+                        <Col span={18}>
+                        <div style={{color:'rgba(255, 255, 255, 0.652)',marginLeft:8}}><FileWordOutlined /> hetthuongcannho.doc</div>
+                        <div style={{color:'rgba(255, 255, 255, 0.652)',marginLeft:8,marginTop:10}}><FilePdfOutlined /> hetthuongcannho.doc</div>
+                        </Col>
+                    </Row>
                 </Col>
                 <Col span={8}>
-                    <div style={{height:250}}>
+                    <Row gutter={16}>
+                        <Col span={11}>
                         <div style={{ color:'rgba(255, 172, 105, 1)' }}><InfoCircleOutlined /> Mức nhuận bút</div>
-                        <div style={{ color:'white',marginTop:15 }}><span style={{color:'rgba(255, 255, 255, 0.652)'}}> 0%</span></div>
+                        <div style={{ color:'white',marginTop:15 }}>Quyền tác giả:</div>
                         <div style={{ color:'white',marginTop:15 }}>Quyền liên quan:</div>
-                        <div style={{ color:'rgba(255, 255, 255, 0.652)',marginTop:10 }}>Quyền của người biểu diễn: <span>50%</span></div>
-                        <div style={{ color:'rgba(255, 255, 255, 0.652)',marginTop:10 }}>Quyền của nhà sản xuất: <span>50%</span></div>
+                        <div style={{ color:'rgba(255, 255, 255, 0.652)',marginTop:10 }}>Quyền của người biểu diễn: </div>
+                        <div style={{ color:'rgba(255, 255, 255, 0.652)',marginTop:10 }}>Quyền của nhà sản xuất:</div>
                         <div style={{ color:'rgba(255, 255, 255, 0.652)' }}>(bản ghi/video)</div>
-                    </div>
+                        </Col>
+                        <Col span={12}>
+                        <div style={{ height: 21 }}></div>
+                        <div style={{color:'rgba(255, 255, 255, 0.652)',marginTop:15}}> 0%</div>
+                        <div style={{ height: 21, marginTop:10}}></div>
+                        <div style={{color:'rgba(255, 255, 255, 0.652)',marginTop:10}}>50%</div>
+                        <div style={{color:'rgba(255, 255, 255, 0.652)',marginTop:10}}>50%</div>
+                        </Col>
+                    </Row>
                 </Col>
             </Row>
             <div style={{ color:'rgba(255, 172, 105, 1)' }}>Thông tin pháp nhân uỷ quyền</div>
             <Row gutter={[16, 16]} style={{marginTop:20}}>
                 <Col span={8}>
-                    <div style={{ height:250 }}>
-                        <div style={{color:'white'}}>Pháp nhân uỷ quyền: <span style={{color:'rgba(255, 255, 255, 0.652)'}}>Cá nhân</span></div>
-                        <div style={{color:'white'}}>Tên người uỷ quyền: <span style={{color:'rgba(255, 255, 255, 0.652)'}}>Nguyễn Văn A</span></div>
-                        <div style={{color:'white'}}>Ngày sinh: <span style={{color:'rgba(255, 255, 255, 0.652)'}}>10/01/1984</span></div>
-                        <div style={{color:'white'}}>Giới tính: <span style={{color:'rgba(255, 255, 255, 0.652)'}}>Nam</span></div>
-                        <div style={{color:'white'}}>Quốc tịch: <span style={{color:'rgba(255, 255, 255, 0.652)'}}>Việt Nam</span></div>
-                        <div style={{color:'white'}}>Số điện thoại: <span style={{color:'rgba(255, 255, 255, 0.652)'}}>(+84) 345 678 901</span></div>
-
-                    </div>
+                    <Row gutter={16}>
+                        <Col span={9}>
+                        <div style={{color:'white'}}>Pháp nhân uỷ quyền: </div>
+                        <div style={{color:'white',marginTop:10}}>Tên người uỷ quyền: </div>
+                        <div style={{color:'white',marginTop:10}}>Ngày sinh: </div>
+                        <div style={{color:'white',marginTop:10}}>Giới tính: </div>
+                        <div style={{color:'white',marginTop:10}}>Quốc tịch: </div>
+                        <div style={{color:'white',marginTop:10}}>Số điện thoại: </div>
+                        </Col>
+                        <Col span={15}>
+                        <div style={{color:'rgba(255, 255, 255, 0.652)'}}>Cá nhân</div>
+                        <div style={{color:'rgba(255, 255, 255, 0.652)',marginTop:10}}>Nguyễn Văn A</div>
+                        <div style={{color:'rgba(255, 255, 255, 0.652)',marginTop:10}}>10/01/1984</div>
+                        <div style={{color:'rgba(255, 255, 255, 0.652)',marginTop:10}}>Nam</div>
+                        <div style={{color:'rgba(255, 255, 255, 0.652)',marginTop:10}}>Việt Nam</div>
+                        <div style={{color:'rgba(255, 255, 255, 0.652)',marginTop:10}}>(+84) 345 678 901</div>
+                        </Col>
+                    </Row>
                 </Col>
                 <Col span={8}>
-                    <div style={{ height:250 }}>
-                        <div style={{ color:'white' }}>Số CMND/ CCCD: <span style={{color:'rgba(255, 255, 255, 0.652)'}}>123456789012</span></div>
-                        <div style={{ color:'white' }}>Ngày cấp: <span style={{color:'rgba(255, 255, 255, 0.652)'}}>10/07/2011</span></div>
-                        <div style={{ color:'white' }}>Nơi cấp: <span style={{color:'rgba(255, 255, 255, 0.652)'}}>Tp.HCM, Việt Nam</span></div>
-                        <div style={{ color:'white' }}>Mã số thuế: <span style={{color:'rgba(255, 255, 255, 0.652)'}}>92387489</span></div>
-                        <div style={{ color:'white' }}>Nơi cư trú: <span style={{color:'rgba(255, 255, 255, 0.652)'}}>69/53, Nguyễn Gia Trí, Phường 25,Quận Bình Thạnh, Thành phố Hồ Chí Minh</span></div>
-
-                    </div>
+                    <Row gutter={16}>
+                        <Col span={8}>
+                        <div style={{ color:'white' }}>Số CMND/ CCCD: </div>
+                        <div style={{ color:'white',marginTop:10 }}>Ngày cấp: </div>
+                        <div style={{ color:'white' ,marginTop:10}}>Nơi cấp: </div>
+                        <div style={{ color:'white' ,marginTop:10}}>Mã số thuế: </div>
+                        <div style={{ color:'white' ,marginTop:10}}>Nơi cư trú: </div>
+                        </Col>
+                        <Col span={12}>
+                        <div style={{color:'rgba(255, 255, 255, 0.652)'}}>123456789012</div>
+                        <div style={{color:'rgba(255, 255, 255, 0.652)',marginTop:10}}>10/07/2011</div>
+                        <div style={{color:'rgba(255, 255, 255, 0.652)',marginTop:10}}>Tp.HCM, Việt Nam</div>
+                        <div style={{color:'rgba(255, 255, 255, 0.652)',marginTop:10}}>92387489</div>
+                        <div style={{color:'rgba(255, 255, 255, 0.652)',marginTop:10}}>69/53, Nguyễn Gia Trí, Phường 25,Quận Bình Thạnh, Thành phố Hồ Chí Minh</div>
+                        </Col>
+                    </Row>
                 </Col>
                 <Col span={8}>
-                    <div style={{ height:250}}>
-                        <div style={{ color:'white' }}>Email: <span style={{color:'rgba(255, 255, 255, 0.652)',marginLeft:50}}>nguyenvana@gmail.com</span></div>
-                        <div style={{ color:'white' }}>Tài khoản đăng nhập: <span style={{color:'rgba(255, 255, 255, 0.652)',marginLeft:50}}>nguyenvana@gmail.com</span></div>
-                        <div style={{ color:'white' }}>Mật khẩu: <span style={{color:'rgba(255, 255, 255, 0.652)',marginLeft:50}}>********</span></div>
-                        <div style={{ color:'white' }}>Số tài khoản: <span style={{color:'rgba(255, 255, 255, 0.652)',marginLeft:50}}>1231123312211223</span></div>
-                        <div style={{ color:'white' }}>Ngân hàng: <span style={{color:'rgba(255, 255, 255, 0.652)',marginLeft:50}}>ACB - Ngân hàng Á Châu</span></div>
-                    </div>
+                    <Row gutter={16}>
+                        <Col span={9}>
+                        <div style={{ color:'white' }}>Email: </div>
+                        <div style={{ color:'white',marginTop:10 }}>Tài khoản đăng nhập: </div>
+                        <div style={{ color:'white',marginTop:10 }}>Mật khẩu: </div>
+                        <div style={{ color:'white',marginTop:10 }}>Số tài khoản: </div>
+                        <div style={{ color:'white',marginTop:10 }}>Ngân hàng: </div>
+                        </Col>
+                        <Col span={15}>
+                        <div style={{color:'rgba(255, 255, 255, 0.652)'}}>nguyenvana@gmail.com</div>
+                        <div style={{color:'rgba(255, 255, 255, 0.652)',marginTop:10}}>nguyenvana@gmail.com</div>
+                        <div style={{color:'rgba(255, 255, 255, 0.652)',marginTop:10}}>********</div>
+                        <div style={{color:'rgba(255, 255, 255, 0.652)',marginTop:10}}>1231123312211223</div>
+                        <div style={{color:'rgba(255, 255, 255, 0.652)',marginTop:10}}>ACB - Ngân hàng Á Châu</div>
+                        </Col>
+                    </Row>
                 </Col>
             </Row>
 
@@ -136,7 +202,8 @@ const ContractDetails = () => {
                 height: 100,
                 borderRadius: '5px 0px'
                 }}>
-                <Button style={{
+                <Button onClick={handleEdit}
+                    style={{
                     width: 35,
                     height: 35,
                     backgroundColor: 'rgba(114, 114, 136, 0.5)',
@@ -194,7 +261,7 @@ const ContractDetails = () => {
                     marginTop:8,
                     border:'none'
                 }}
-                    
+                    onClick={handleReason}
                     icon={<CloseOutlined  style={{ color: 'red' }} />}
                 />
                 <span style={{ color: 'white' ,textAlign:'center', fontSize:12}}>Hủy hợp đồng</span>
@@ -256,7 +323,25 @@ const ContractDetails = () => {
                     >Lưu</Button>
                 </div>
             )}
-
+                {/* Màn hình tối */}
+            {isReason && (
+                <div className="overlay" onClick={handleHideReason}></div>
+            )}
+            {/* Thông báo */}
+            {isReason && (
+            <div className="custom-notification" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <div className="notification-content">
+                    <h3>Lý do hủy hợp đồng uỷ quyền HĐUQ 1234</h3>
+                </div>
+                <TextArea placeholder='Cho chúng tôi biết lý do bạn muốn huỷ hợp đồng uỷ quyền này...' style={{ backgroundColor:'rgba(62, 62, 91, 1)', border:'1px solid rgba(114, 114, 136, 1)', height:'300px',color:'rgba(114, 114, 136, 1)' }} />
+                <div><Button onClick={handleHideReason} style={{ marginTop: 30, width:135, height:35, border: '1px solid rgba(255, 117, 6, 1)', backgroundColor:'transparent', color:'rgba(255, 117, 6, 1)',marginRight:30 }}>
+                    Quay lại
+                </Button>
+                <Button onClick={handleHideReason} style={{ marginTop: 30, width:135, height:35, border: '1px solid rgba(255, 117, 6, 1)', background:'rgba(255, 117, 6, 1)', color:'white' }}>
+                    Hủy hợp đồng
+                </Button></div>
+            </div>
+            )}
         </div>
      );
 }

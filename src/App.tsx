@@ -7,6 +7,12 @@ import ErrorLinkPage from './pages/login/ErrorLinkPage';
 import InfoPage from './pages/info/InfoPage';
 import ManagePage from './pages/manage/ManagePage';
 import ContractDetailsPage from './pages/manage/ContractDetailsPage';
+import ContractEditPage from './pages/manage/ContractEditPage';
+import AddContractPage from './pages/manage/AddContractPage';
+import ExploitPage from './pages/manage/ExploitPage';
+import AuthorizedPage from './pages/manage/AuthorizedPage';
+import AddAuthorizedPage from './pages/manage/AddAuthorizedPage';
+
 
 
 
@@ -23,6 +29,12 @@ function App() {
 
         <Route path='/Manage' element={<ManagePage/>}/>
         <Route path='/ContractDetails' element={<ContractDetailsPage/>}/>
+        <Route path='/ContractEdit' element={<ContractEditPage/>}/>
+        <Route path='/AddContract' element={<AddContractPage/>}/>
+        <Route path='/Authorized' element={<AuthorizedPage/>}/>
+        <Route path='/AddAuthorized' element={<AddAuthorizedPage/>}/>
+
+        <Route path='/Manage/Exploit' element={<ExploitPage/>}/>
       </Routes>
     </Router>
   );
