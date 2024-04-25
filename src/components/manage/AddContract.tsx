@@ -10,6 +10,10 @@ const AddContract = () => {
         // Chuyển hướng tới trang "/login"
         navigate('/Manage');
     };
+    const handleAddRecord = () => {
+        // Chuyển hướng tới trang "/login"
+        navigate('/AddRecord');
+    };
     return ( 
         <div>
             <h3 style={{ color: 'gray', marginBottom: '-10px', fontSize: '14px' }}>
@@ -149,7 +153,7 @@ const AddContract = () => {
                     >
                         Hủy
                     </Button>
-                    <Button onClick={handleDone}
+                    <Button onClick={handleAddRecord}
                         style={{ 
                             marginLeft: 60,
                             width:135,

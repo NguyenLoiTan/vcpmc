@@ -20,6 +20,16 @@
     text-align: center;
     color: rgba(255, 172, 105, 1);
   }
+  .check-cell {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    
+  }
+  .check-box {
+    transform: scale(1.5); /* Điều chỉnh kích thước */
+    border-color: #00ff00;
+  }
   .data-cell {
     flex: 1;
     padding: 10px;

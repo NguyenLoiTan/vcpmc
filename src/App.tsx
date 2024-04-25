@@ -12,6 +12,13 @@ import AddContractPage from './pages/manage/AddContractPage';
 import ExploitPage from './pages/manage/ExploitPage';
 import AuthorizedPage from './pages/manage/AuthorizedPage';
 import AddAuthorizedPage from './pages/manage/AddAuthorizedPage';
+import AddRecordPage from './pages/manage/AddRecordPage';
+import ExoloitDetailsPage from './pages/manage/ExoloitDetailsPage';
+import ExploitEditPage from './pages/manage/ExploitEditPage';
+import AddExploitPage from './pages/manage/AddExploitPage';
+import RecordPage from './pages/record/RecordPage';
+import UpdateRecordPage from './pages/record/UpdateRecordPage';
+import ManageRecordPage from './pages/record/ManageRecordPage';
 
 
 
@@ -33,8 +40,17 @@ function App() {
         <Route path='/AddContract' element={<AddContractPage/>}/>
         <Route path='/Authorized' element={<AuthorizedPage/>}/>
         <Route path='/AddAuthorized' element={<AddAuthorizedPage/>}/>
+        <Route path='/AddRecord' element={<AddRecordPage/>}/>
 
         <Route path='/Manage/Exploit' element={<ExploitPage/>}/>
+        <Route path='/ExploitDetails' element={<ExoloitDetailsPage/>}/>
+        <Route path='/ExploitEdit' element={<ExploitEditPage/>}/>
+        <Route path='/AddExploit' element={<AddExploitPage/>}/>
+
+        <Route path='/Record' element={<RecordPage/>}/>
+        <Route path='/UpdateRecord' element={<UpdateRecordPage/>}/>
+        <Route path='/ManageRecord' element={<ManageRecordPage/>}/>
+
       </Routes>
     </Router>
   );

@@ -11,9 +11,16 @@ const InfoMenu: React.FC<InfoMenuProps> = ({ children }) => {
     const location = useLocation();
     const navigate = useNavigate();
 
+    const handleInfo = () => {
+        navigate('/Info');
+    }
     const handleManage = () => {
-        // Chuyển hướng tới trang "/login"
+        
         navigate('/Manage');
+    };
+    const handleRecord = () => {
+        
+        navigate('/Record');
     };
     return ( 
         <div >
@@ -60,8 +67,8 @@ const InfoMenu: React.FC<InfoMenuProps> = ({ children }) => {
                         alignItems: 'center',
                         flexDirection: 'column',
                         backgroundColor:'transparent',
-                        color: location.pathname === '/' ? 'rgba(182, 81, 0, 1)' : 'white',
-                    }}>
+                        color: location.pathname === '/Record' ? 'rgba(182, 81, 0, 1)' : 'white',
+                    }} onClick={handleRecord}>
                         <i className='icon-item' style={{}}>
                             <InboxOutlined />
                         </i>
@@ -220,14 +227,14 @@ const InfoMenu: React.FC<InfoMenuProps> = ({ children }) => {
                 margin: '20px 20px 0 0',
                 background: 'none',
                 border: 'none'
-            }}>
+            }} onClick={handleInfo}>
                 <img src="/assett/img/avatar.jpg" alt="" style={{ height: '40px', marginRight: 5 ,borderRadius: '50%'}} />
                 <div style={{
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center', // Canh giữa theo chiều dọc
                     marginLeft: '5px' // Khoảng cách giữa ảnh và chữ
-                }}>
+                }} >
                     <div style={{color:'white'}}>T.Lợi</div>
                     <div style={{ color: 'rgba(182, 81, 0, 1)' }}>Admin</div>
                 </div>
