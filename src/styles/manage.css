@@ -4,12 +4,11 @@
     border: none;
     border-radius: 5px 5px 0px 0px;
     overflow: hidden;
-
+    background-color: rgba(47, 47, 65, 0.7);
   }
   
   .table-header {
     display: flex;
-    background-color: rgba(47, 47, 65, 0.7);
     border: none;
     font-weight: bold; /* Để làm nổi bật tiêu đề */
   }
@@ -139,3 +138,43 @@
   flex: 1;
   /* Thêm CSS tùy chỉnh cho các cột */
 }
+.card-row {
+  display: flex;
+}
+
+.card-content {
+  width: calc(25% - 20px); /* Đặt chiều rộng của mỗi card, trừ đi khoảng cách giữa các card */
+  margin-bottom: 20px; /* Khoảng cách dưới của mỗi card */
+  background-color: rgba(47, 47, 65, 1); /* Màu nền của card */
+  padding: 10px; /* Khoảng cách lề bên trong của card */
+  border-radius: 5px; /* Độ cong viền của card */
+}
+
+.card-content img {
+  width: 100%; /* Đảm bảo hình ảnh trong card lấp đầy phần nội dung */
+  border-radius: 5px; /* Độ cong viền của hình ảnh */
+}
+
+.card-content h3 {
+  color: white; /* Màu chữ của tiêu đề */
+}
+
+.card-content p {
+  color: gray; /* Màu chữ của nội dung */
+}
+
+.card-content Button {
+  width: 20%; /* Làm cho nút có chiều rộng bằng 100% của phần nội dung */
+  height: 50px;
+  margin-top: 10px; /* Khoảng cách từ nút đến các phần khác */
+  margin-left: 5px;
+  background-color: rgba(114, 114, 136, 0.5); /* Màu nền của nút */
+  color: rgba(255, 117, 6, 1); /* Màu chữ của nút */
+  border: none; /* Loại bỏ viền của nút */
+  justify-items: center;
+}
+
+.card-content Button span {
+  color: gray; /* Màu chữ của phần thông tin bên trong nút */
+}
+

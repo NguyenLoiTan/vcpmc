@@ -21,6 +21,19 @@ const InfoMenu: React.FC<InfoMenuProps> = ({ children }) => {
     const handleRecord = () => {
         
         navigate('/Record');
+    }; 
+    const handlePlaylist = () => {
+        
+        navigate('/Playlist');
+    };
+    const handleBroadcastSchedule = () => {
+        navigate('/BroadcastSchedule');
+    };
+    const handleRevenue = () => {
+        navigate('/Revenue');
+    };
+    const handleSetting = () => {
+        navigate('/Setting');
     };
     return ( 
         <div >
@@ -87,8 +100,9 @@ const InfoMenu: React.FC<InfoMenuProps> = ({ children }) => {
                         alignItems: 'center',
                         flexDirection: 'column',
                         backgroundColor:'transparent',
-                        color: location.pathname === '/' ? 'rgba(182, 81, 0, 1)' : 'white',
-                    }}>
+                        color: location.pathname === '/Playlist' ? 'rgba(182, 81, 0, 1)' : 'white',
+                    }} onClick={handlePlaylist}
+                    >
                         <i className='icon-item'>
                             <UnorderedListOutlined />
                         </i>
@@ -107,8 +121,9 @@ const InfoMenu: React.FC<InfoMenuProps> = ({ children }) => {
                         alignItems: 'center',
                         flexDirection: 'column',
                         backgroundColor:'transparent',
-                        color: location.pathname === '/' ? 'rgba(182, 81, 0, 1)' : 'white',
-                    }}>
+                        color: location.pathname === '/BroadcastSchedule' ? 'rgba(182, 81, 0, 1)' : 'white',
+                    }} onClick={handleBroadcastSchedule}
+                    >
                         <i className='icon-item'>
                             <CalendarOutlined />
                         </i>
@@ -147,8 +162,9 @@ const InfoMenu: React.FC<InfoMenuProps> = ({ children }) => {
                         alignItems: 'center',
                         flexDirection: 'column',
                         backgroundColor:'transparent',
-                        color: location.pathname === '/' ? 'rgba(182, 81, 0, 1)' : 'white',
-                    }}>
+                        color: location.pathname === '/Revenue' ? 'rgba(182, 81, 0, 1)' : 'white',
+                    }} onClick={handleRevenue}
+                    >
                         <i className='icon-item'>
                             <MoneyCollectOutlined />
                         </i>
@@ -167,8 +183,9 @@ const InfoMenu: React.FC<InfoMenuProps> = ({ children }) => {
                         alignItems: 'center',
                         flexDirection: 'column',
                         backgroundColor:'transparent',
-                        color: location.pathname === '/' ? 'rgba(182, 81, 0, 1)' : 'white',
-                    }}>
+                        color: location.pathname === '/Setting' ? 'rgba(182, 81, 0, 1)' : 'white',
+                    }} onClick={handleSetting}
+                    >
                         <i className='icon-item'>
                             <SettingOutlined />
                         </i>

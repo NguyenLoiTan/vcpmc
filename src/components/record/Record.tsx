@@ -19,6 +19,7 @@ interface DataItem {
 const Record: React.FC = () => {
     const [pageSize, setPageSize] = useState<number>(2);
     const [currentPage, setCurrentPage] = useState<number>(1);
+    const [displayMode, setDisplayMode] = useState<string>('table');
     const navigate = useNavigate();
     const [showYouTube, setShowYouTube] = useState(false);
   
@@ -56,23 +57,55 @@ const Record: React.FC = () => {
             format:'Audio',
             expiryDate:'02/10/2019'
         },
+        {
+            key: '1',
+            nameRecord:'Mất em ',
+            codeISRC:'KRA40105463',
+            time:'04:27',
+            singer:'Phan Mạnh Quỳnh',
+            author:'Phan Mạnh Quỳnh',
+            category:'Ballad',
+            format:'Audio',
+            expiryDate:'02/10/2019'
+        },
+        
         // Thêm dữ liệu cho các hàng khác nếu cần
     ];
 
     const renderDataRows = () => {
         return data.map((item, index) => (
-            <div key={item.key} className="data-row">
-                <div className="data-cell">{index + 1}</div>
-                <div className="data-cell">{item.nameRecord}</div>
-                <div className="data-cell">{item.codeISRC}</div>
-                <div className="data-cell">{item.time}</div>
-                <div className="data-cell">{item.singer}</div>
-                <div className="data-cell">{item.author}</div>
-                <div className="data-cell">{item.category}</div>
-                <div className="data-cell">{item.format}</div>
-                <div className="data-cell"><span className="dot"></span>Còn hạn sử dụng <br />{item.expiryDate}</div>
-                <div className="data-cell"><Link to="/UpdateRecord" style={{color:'rgba(255, 117, 6, 1)'}}>Cập nhập</Link></div>
-                <div className="data-cell"><Link to="" onClick={handleReason} style={{color:'rgba(255, 117, 6, 1)'}}>Nghe</Link></div>
+            <div key={item.key} className={displayMode === 'table' ? "data-row" : "card-row"}>
+                {displayMode === 'table' ? (
+                    <>
+                        <div className="data-cell">{index + 1}</div>
+                        <div className="data-cell">{item.nameRecord}</div>
+                        <div className="data-cell">{item.codeISRC}</div>
+                        <div className="data-cell">{item.time}</div>
+                        <div className="data-cell">{item.singer}</div>
+                        <div className="data-cell">{item.author}</div>
+                        <div className="data-cell">{item.category}</div>
+                        <div className="data-cell">{item.format}</div>
+                        <div className="data-cell"><span className="dot"></span>Còn hạn sử dụng <br />{item.expiryDate}</div>
+                        <div className="data-cell">
+                    <Link to="/UpdateRecord" style={{color:'rgba(255, 117, 6, 1)'}}>Cập nhập</Link>
+                </div>
+                <div className="data-cell">
+                    <Link to="" onClick={handleReason} style={{color:'rgba(255, 117, 6, 1)'}}>Nghe</Link>
+                </div>
+                    </>
+                ) : (
+                    <div className="card-content">
+                        <img src="/assett/img/avatar.jpg" alt="sa" />
+                        <h3>{item.nameRecord}</h3>
+                        <p>Ca sĩ: {item.singer}</p>
+                        <p>Sáng tác: {item.author}</p>
+                        <p>Mã hợp đồng: {item.codeISRC}</p>
+                        <Button><span>Thể loại</span><br />{item.category}</Button>
+                        <Button><span>Định dạng</span><br />{item.format}</Button>
+                        <Button><span>Thời lượng</span><br />{item.time}</Button>
+                    </div>
+                )}
+                
             </div>
         ));
     };
@@ -88,6 +121,9 @@ const Record: React.FC = () => {
         />
     );
 
+    const handleDisplayModeChange = (mode: string) => {
+        setDisplayMode(mode);
+    };
     return (
         <div>
             <h3 style={{ color: 'gray', marginBottom: '-10px', fontSize: '14px' }}>
@@ -158,18 +194,19 @@ const Record: React.FC = () => {
                         </Form.Item>
                     </Col>
                     <Col span={4} >
-                        <div style={{ display: 'flex', marginLeft: '20px', alignItems: 'center',marginBottom:20 }}>
+                        <div style={{ display: 'flex', marginLeft: '20px', alignItems: 'center',marginBottom:20, color:'white' }}>
                             <div style={{ marginRight: '16px', cursor: 'pointer', fontSize: '24px' }}>
-                            <UnorderedListOutlined />
+                            <UnorderedListOutlined onClick={() => handleDisplayModeChange('table')}/>
                             </div>
                             <div style={{ cursor: 'pointer', fontSize: '24px' }}>
-                            <AppstoreOutlined />
+                            <AppstoreOutlined onClick={() => handleDisplayModeChange('card')}/>
                             </div>
                         </div>
                     </Col>
                 </Row>
                 <Row gutter={16}>
                     <Col span={22}>
+                    {displayMode === 'table' ? (
                         <div className="table-container">
                             <div className="table-header">
                                 <div className="table-cell">STT</div>
@@ -188,6 +225,11 @@ const Record: React.FC = () => {
                                 {renderDataRows()}
                             </div>
                         </div>
+                        ) : (
+                            <>
+                            {renderDataRows()}
+                            </>
+                            )}
                         <div style={{ display: 'flex', alignItems: 'center', backgroundColor: 'rgba(47, 47, 65, 0.7)' }}>
                             <span style={{ color: 'rgba(245, 245, 255, 1)', marginLeft: '10px',marginRight:'auto' }}>
                                 Hiển thị

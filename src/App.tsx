@@ -19,6 +19,21 @@ import AddExploitPage from './pages/manage/AddExploitPage';
 import RecordPage from './pages/record/RecordPage';
 import UpdateRecordPage from './pages/record/UpdateRecordPage';
 import ManageRecordPage from './pages/record/ManageRecordPage';
+import PlaylistPage from './pages/playlist/PlaylistPage';
+import PlaylistDetailsPage from './pages/playlist/PlaylistDetailsPage';
+import PlaylistEditPage from './pages/playlist/PlaylistEditPage';
+import AddRecordPlaylistPage from './pages/playlist/AddRecordPlaylistPage';
+import AddPlaylistPage from './pages/playlist/AddPlaylistPage';
+import BroadcastSchedulePage from './pages/broadcastSchedule/BroadcastSchedulePage';
+import BroadcastScheduleDetailsPage from './pages/broadcastSchedule/BroadcastScheduleDetailsPage';
+import RevenuePage from './pages/revenue/RevenuePage';
+import RevenueDetailtsPage from './pages/revenue/RevenueDetailtsPage';
+import SettingPage from './pages/setting/SettingPage';
+import EditUserPage from './pages/setting/EditUserPage';
+import AddUserPage from './pages/setting/AddUserPage';
+import RoleUserPage from './pages/setting/RoleUserPage';
+import EditRolePage from './pages/setting/EditRolePage';
+import AddRolePage from './pages/setting/AddRolePage';
 
 
 
@@ -51,6 +66,24 @@ function App() {
         <Route path='/UpdateRecord' element={<UpdateRecordPage/>}/>
         <Route path='/ManageRecord' element={<ManageRecordPage/>}/>
 
+        <Route path='/Playlist' element={<PlaylistPage/>}/>
+        <Route path='/PlaylistDetails' element={<PlaylistDetailsPage/>}/>
+        <Route path='/PlaylistEdit' element={<PlaylistEditPage/>}/>
+        <Route path='/AddRecordPlaylist' element={<AddRecordPlaylistPage/>}/>
+        <Route path='/AddPlaylist' element={<AddPlaylistPage/>}/>
+        
+        <Route path='/BroadcastSchedule' element={<BroadcastSchedulePage/>}/>
+        <Route path='/BroadcastScheduleDetails' element={<BroadcastScheduleDetailsPage/>}/>
+
+        <Route path='/Revenue' element={<RevenuePage/>}/>
+        <Route path='/RevenueDetailts' element={<RevenueDetailtsPage/>}/>
+
+        <Route path='/Setting' element={<SettingPage/>}/>
+        <Route path='/EditUser' element={<EditUserPage/>}/>
+        <Route path='/AddUser' element={<AddUserPage/>}/>
+        <Route path='/RoleUser' element={<RoleUserPage/>}/>
+        <Route path='/EditRole' element={<EditRolePage/>}/>
+        <Route path='/AddRole' element={<AddRolePage/>}/>
       </Routes>
     </Router>
   );
