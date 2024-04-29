@@ -1,9 +1,11 @@
 import { Button, Checkbox, Form, Input } from "antd";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 const Login: React.FC = () => {
     const [form] = Form.useForm();
+    const navigate = useNavigate();
     const [error, setError] = useState<string | null>(null);
     
 
@@ -11,6 +13,7 @@ const Login: React.FC = () => {
         if (values.username !== "abc@gmail.com" || values.password !== "123456") {
             setError("Tên đăng nhập hoặc mật khẩu không chính xác");
         } else {
+            navigate('/Info');
             setError(null);
             // Xử lý khi đăng nhập thành công
         }
